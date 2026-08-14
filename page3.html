@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My game info</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* ==== FONT TÙY CHỈNH ==== */
+        @font-face {
+            font-family: 'GameFont3';
+            src: url('vu.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'GameFont4';
+            src: url('Minecraft.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* ==== HEADER ==== */
+        .game-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .game-header h1 {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .game-intro {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 1.2rem;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==== GAME CONTAINER ==== */
+        .game-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .game-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #4a90e2;
+            text-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        }
+
+        .game-bar {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .game-bar:hover {
+            transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(74, 144, 226, 0.5);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .game-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid #4a90e2;
+        }
+
+        .game-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .game-info {
+            flex: 1;
+        }
+
+        .game-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #ffffff;
+        }
+
+        .game-note {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            margin-bottom: 10px;
+        }
+
+        .time-bar {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+            min-width: 100px;
+        }
+
+        .time-fill {
+            background: linear-gradient(90deg, #2196F3 0%, #4a90e2 100%);
+            height: 100%;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: width 0.3s ease;
+            min-width: 40px;
+        }
+
+        /* ==== ÁP DỤNG FONT CHO TỪNG GAME ==== */
+        .game-1 .game-name,
+        .game-1 .game-note {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .game-2 .game-name,
+        .game-2 .game-note {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .game-3 .game-name,
+        .game-3 .game-note {
+            font-family: 'GameFont3', sans-serif;
+        }
+
+        .game-4 .game-name,
+        .game-4 .game-note {
+            font-family: 'GameFont4', sans-serif;
+        }
+
+        /* ==== PHẦN GIỚI THIỆU THÊM VỀ GAME ==== */
+        .game-extra {
+            margin-top: 30px;
+            animation: fadeIn 1s ease-out 0.9s both;
+        }
+
+        .extra-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .extra-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+
+        .extra-text {
+            color: #d0d0d0;
+            line-height: 1.6;
+        }
+
+        /* ==== NÚT ĐIỀU HƯỚNG ==== */
+        .navigation-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .nav-btn:active {
+            transform: translateY(2px);
+        }
+
+        /* ==== RESPONSIVE ==== */
+        @media (max-width: 768px) {
+            .game-header h1 {
+                font-size: 2rem;
+            }
+
+            .game-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .game-image {
+                width: 60px;
+                height: 60px;
+                margin: 0 auto;
+            }
+
+            .navigation-section {
+                gap: 15px;
+            }
+
+            .nav-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-header h1 {
+                font-size: 1.5rem;
+            }
+
+            .game-name {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="game-header">
+            <h1>:)</h1>
+        </div>
+
+        <!-- GIỚI THIỆU CHUNG -->
+        <div class="game-intro">
+            vũ chẳng phải là một game thủ đẳng cấp,chỉ chơi vì nó vui và còn đi tìm lỗi bug và khai thác nó:)
+        </div>
+
+        <!-- DANH SÁCH GAME -->
+        <div class="game-container">
+            <div class="game-title">4 game vũ hay chơi nhất(cật nhật cuối 7/2026)</div>
+
+            <!-- Game Bar 1 - Font mặc định -->
+            <div class="game-bar game-1">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/80" alt="Mini World">
+                    <!-- THAY ĐỔI LINK ẢNH GAME 1 -->
+                </div>
+                <div class="game-info">
+                    <div class="game-name">Mini World</div>
+                    <div class="game-note">vũ đã làm hơi quá với tựa game này rồi,nên mới nghỉ game:(</div>
+                    <div class="time-bar">
+                        <div class="time-fill" data-hours="5000">5000+ giờ</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Bar 2 - Font mặc định -->
+            <div class="game-bar game-2">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/80" alt="Roblox">
+                    <!-- THAY ĐỔI LINK ẢNH GAME 2 -->
+                </div>
+                <div class="game-info">
+                    <div class="game-name">Roblox</div>
+                    <div class="game-note">xóa game xong éo tải lại được</div>
+                    <div class="time-bar">
+                        <div class="time-fill" data-hours="3000">3000+ giờ</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Bar 3 - Font tùy chỉnh từ font3.ttf -->
+            <div class="game-bar game-3">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/80" alt="Genshin Impact">
+                    <!-- THAY ĐỔI LINK ẢNH GAME 3 -->
+                </div>
+                <div class="game-info">
+                    <div class="game-name">Genshin Impact</div>
+                    <div class="game-note">slide hay nhất vũ từng xem</div>
+                    <div class="time-bar">
+                        <div class="time-fill" data-hours="600">600+ giờ</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Bar 4 - Font tùy chỉnh từ font4.ttf -->
+            <div class="game-bar game-4">
+                <div class="game-image">
+                    <img src="https://via.placeholder.com/80" alt="Minecraft">
+                    <!-- THAY ĐỔI LINK ẢNH GAME 4 -->
+                </div>
+                <div class="game-info">
+                    <div class="game-name">Minecraft</div>
+                    <div class="game-note">cao thủ kiên nhẫn</div>
+                    <div class="time-bar">
+                        <div class="time-fill" data-hours="400">400+ giờ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GIỚI THIỆU THÊM VỀ GAME -->
+        <div class="game-extra">
+            <div class="extra-card">
+                <div class="extra-title">🎯 Sở Thích Chơi Game</div>
+                <div class="extra-text">
+                    Tôi thích chơi game vì nó giúp tôi giải trí sau những giờ làm việc căng thẳng. 
+                    Đặc biệt, tôi yêu thích các game chiến thuật đòi hỏi tư duy và phối hợp đồng đội.
+                </div>
+            </div>
+
+            <div class="extra-card">
+                <div class="extra-title">🏆 Thành Tích</div>
+                <div class="extra-text">
+                    - Đạt rank Kim Cương trong Liên Minh Huyền Thoại<br>
+                    - Top 500 CS:GO khu vực Đông Nam Á<br>
+                    - Hoàn thành 100% map trong Genshin Impact
+                </div>
+            </div>
+
+            <div class="extra-card">
+                <div class="extra-title">🎮 Thể Loại Yêu Thích</div>
+                <div class="extra-text">
+                    - MOBA (Liên Minh Huyền Thoại, Dota 2)<br>
+                    - FPS (CS:GO, Valorant)<br>
+                    - RPG (Genshin Impact, Final Fantasy)<br>
+                    - Chiến thuật (Civilization, Age of Empires)
+                </div>
+            </div>
+
+            <div class="extra-card">
+                <div class="extra-title">⏰ Thời Gian Chơi</div>
+                <div class="extra-text">
+                    - Buổi tối: 2-3 giờ sau khi đi làm về<br>
+                    - Cuối tuần: 4-5 giờ mỗi ngày<br>
+                    - Thường chơi cùng bạn bè vào tối thứ 7
+                </div>
+            </div>
+        </div>
+
+        <!-- NÚT ĐIỀU HƯỚNG -->
+        <div class="navigation-section">
+            <a href="page2.html" class="nav-btn">👤 Giới Thiệu</a>
+            <a href="page4.html" class="nav-btn">📄 Trang 4</a>
+            <a href="page5.html" class="nav-btn">📄 Trang 5</a>
+            <a href="index.html" class="nav-btn">🏠 Trang Chủ</a>
+        </div>
+    </div>
+
+    <script>
+        // Tự động tính toán độ dài của thanh thời gian chơi
+        function calculateTimeBars() {
+            const timeFills = document.querySelectorAll('.time-fill');
+            const maxHours = Math.max(...Array.from(timeFills).map(fill => 
+                parseInt(fill.getAttribute('data-hours'))
+            ));
+
+            timeFills.forEach(fill => {
+                const hours = parseInt(fill.getAttribute('data-hours'));
+                const percentage = (hours / maxHours) * 100;
+                fill.style.width = percentage + '%';
+                
+                // Thêm animation cho thanh
+                fill.style.transition = 'width 1s ease-out';
+                setTimeout(() => {
+                    fill.style.width = percentage + '%';
+                }, 100);
+            });
+        }
+
+        // Gọi hàm khi trang tải xong
+        window.addEventListener('load', calculateTimeBars);
+        
+        // Gọi lại khi resize để responsive
+        window.addEventListener('resize', calculateTimeBars);
+    </script>
+</body>
+</html>
