@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giới Thiệu Bản Thân</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #ffffff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* ==== PHẦN 1: ẢNH VÀ TÊN ==== */
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #4a90e2;
+            box-shadow: 0 0 30px rgba(74, 144, 226, 0.5);
+            flex-shrink: 0;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-name {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        /* ==== PHẦN 2: THÔNG TIN ==== */
+        .info-section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 50px;
+            border-left: 4px solid #4a90e2;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .info-item {
+            margin: 12px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #4a90e2;
+            margin-right: 10px;
+        }
+
+        /* ==== PHẦN GIỚI THIỆU THÊM ==== */
+        .about-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 50px;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .about-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4a90e2;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            color: #d0d0d0;
+            text-align: justify;
+        }
+
+        /* ==== PHẦN NÚT ĐIỀU HƯỚNG ==== */
+        .navigation-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+            animation: fadeInUp 1s ease-out 0.9s both;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .nav-btn:active {
+            transform: translateY(2px);
+        }
+
+        /* ==== RESPONSIVE ==== */
+        @media (max-width: 768px) {
+            .profile-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .profile-name {
+                font-size: 2rem;
+            }
+
+            .info-item {
+                font-size: 1rem;
+            }
+
+            .navigation-section {
+                gap: 15px;
+            }
+
+            .nav-btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-name {
+                font-size: 1.5rem;
+            }
+
+            .info-item {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PHẦN 1: ẢNH VÀ TÊN -->
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="https://via.placeholder.com/150" alt="Ảnh đại diện">
+                <!-- THAY ĐỔI LINK ẢNH CỦA BẠN Ở ĐÂY -->
+            </div>
+            <div class="profile-name">
+                Vũ Pro Max
+                <!-- THAY ĐỔI TÊN CỦA BẠN Ở ĐÂY -->
+            </div>
+        </div>
+
+        <!-- PHẦN 2: THÔNG TIN CÁ NHÂN -->
+        <div class="info-section">
+            <div class="info-item">
+                <span class="info-label">Ngày sinh:</span> 25/07/2012
+            </div>
+            <div class="info-item">
+                <span class="info-label">Địa chỉ:</span> Gia Lai, Việt Nam
+            </div>
+            <div class="info-item">
+                <span class="info-label">Việc thường làm:</span> Viết code,phá casio,mò laptop
+            </div>
+            <div class="info-item">
+                <span class="info-label">Học vấn:</span> Trung học
+            </div>
+            <div class="info-item">
+                <span class="info-label">Email:</span> cho là bị phá:)
+            </div>
+            <div class="info-item">
+                <span class="info-label">SĐT:</span> cho là bị phá:)
+            </div>
+        </div>
+
+        <!-- PHẦN 3: GIỚI THIỆU THÊM -->
+        <div class="about-section">
+            <div class="about-title">một ít về vũ</div>
+            <div class="about-text">
+                I'm just a normal guy 
+                Thích nghịch,phá
+                Cậu bé kiên nhẫn nhất với cái laptop cùi bắp để viết ra cái code web này
+            </div>
+        </div>
+
+        <!-- PHẦN 4: NÚT ĐIỀU HƯỚNG -->
+        <div class="navigation-section">
+            <a href="page3.html" class="nav-btn">Về game</a>
+            <a href="page4.html" class="nav-btn">new info</a>
+            <a href="page5.html" class="nav-btn">new info</a>
+            <a href="index.html" class="nav-btn">Home</a>
+        </div>
+    </div>
+</body>
+</html>
