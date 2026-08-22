@@ -4,5 +4,5 @@
 🤓🐧
 # page
 > page1:main page
-> > page2:trang giới thiệu bản thân(chính)
-> > page3:trang giới thiệu bản thân liên quan tới game
+> - page2:trang giới thiệu bản thân(chính)
+> - page3:trang giới thiệu bản thân liên quan tới game
